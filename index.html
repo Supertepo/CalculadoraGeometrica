@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Figuras Geométricas</title>
+    <link rel="stylesheet" href="styles/style.css"> </head>
+<body>
+
+    <header class="top-menu">
+        <button class="top-item" data-figure="cuadrado">Cuadrado</button>
+        <button class="top-item" data-figure="circulo">Círculo</button>
+        <button class="top-item" data-figure="rectangulo">Rectángulo</button>
+        <button class="top-item" data-figure="triangulo">Triángulo</button>
+        <button class="top-item" data-figure="pentagono">Pentágono</button>
+        <button class="top-item" data-figure="trapecio">Trapecio</button>
+        <button class="top-item" data-figure="cubo">Cubo</button>
+        <button class="top-item" data-figure="prisma">Prisma</button>
+        <button class="top-item" data-figure="esfera">Esfera</button>
+        <button class="top-item" data-figure="cilindro">Cilindro</button>
+        <button class="top-item" data-figure="cono">Cono</button>
+        <button class="top-item" data-figure="piramide">Pirámide</button>
+    </header>
+
+    <main class="container">
+        <aside id="sidebar"></aside>
+
+        <div class="content">
+
+            <div class="view card" data-figure="cuadrado" hidden>
+                <h2>Cuadrado</h2>
+                <form class="form" data-shape="cuadrado">
+                    <div class="form__group">
+                        <label for="cuadrado-l">Lado (l):</label>
+                        <input type="number" step="any" id="cuadrado-l" name="lado" required>
+                        <small>Perímetro: 4l. Área: l<sup>2</sup>.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Perímetro</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="circulo" hidden>
+                <h2>Círculo</h2>
+                <form class="form" data-shape="circulo">
+                    <div class="form__group">
+                        <label for="circulo-r">Radio (r):</label>
+                        <input type="number" step="any" id="circulo-r" name="radio" required>
+                        <small>Perímetro (Circunferencia): 2&pi;r. Área: &pi;r<sup>2</sup>.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Circunferencia</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="rectangulo" hidden>
+                <h2>Rectángulo</h2>
+                <form class="form" data-shape="rectangulo">
+                    <div class="form__group">
+                        <label for="rect-a">Ancho (a):</label>
+                        <input type="number" step="any" id="rect-a" name="ancho" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="rect-b">Alto (b):</label>
+                        <input type="number" step="any" id="rect-b" name="alto" required>
+                        <small>Perímetro: 2(a+b). Área: a &middot; b.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Perímetro</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="triangulo" hidden>
+                <h2>Triángulo</h2>
+                <form class="form" data-shape="triangulo">
+                    <div class="variant" data-variant="equilatero" hidden>
+                        <h3>Equilátero</h3>
+                        <div class="form__group">
+                            <label for="tri-eq-l">Lado (a):</label>
+                            <input type="number" step="any" id="tri-eq-l" name="ladoEqui">
+                            <small>Perímetro: 3a. Área: (&radic;3 / 4)a<sup>2</sup>.</small>
+                        </div>
+                    </div>
+                    <div class="variant" data-variant="isoceles" hidden>
+                        <h3>Isósceles</h3>
+                        <div class="form__group">
+                            <label for="tri-iso-s">Lado igual (s):</label>
+                            <input type="number" step="any" id="tri-iso-s" name="ladoIgual">
+                        </div>
+                        <div class="form__group">
+                            <label for="tri-iso-b">Base (b):</label>
+                            <input type="number" step="any" id="tri-iso-b" name="baseIso">
+                            <small>Perímetro: 2s+b. Área: (b/2)&radic;(s<sup>2</sup> - (b/2)<sup>2</sup>).</small>
+                        </div>
+                    </div>
+                    <div class="variant" data-variant="escaleno" hidden>
+                        <h3>Escaleno (o General)</h3>
+                        <div class="form__group">
+                            <label for="tri-esc-a">Lado A:</label>
+                            <input type="number" step="any" id="tri-esc-a" name="ladoA">
+                        </div>
+                        <div class="form__group">
+                            <label for="tri-esc-b">Lado B:</label>
+                            <input type="number" step="any" id="tri-esc-b" name="ladoB">
+                        </div>
+                        <div class="form__group">
+                            <label for="tri-esc-c">Lado C:</label>
+                            <input type="number" step="any" id="tri-esc-c" name="ladoC">
+                            <small>Perímetro: a+b+c. Área: Fórmula de Herón.</small>
+                        </div>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Perímetro</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+            
+            <div class="view card" data-figure="pentagono" hidden>
+                <h2>Pentágono Regular</h2>
+                <form class="form" data-shape="pentagono">
+                    <div class="form__group">
+                        <label for="pent-l">Lado (a):</label>
+                        <input type="number" step="any" id="pent-l" name="lado" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="pent-ap">Apotema (ap):</label>
+                        <input type="number" step="any" id="pent-ap" name="apotema" required>
+                        <small>Perímetro: 5a. Área: (5a &middot; ap) / 2.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Perímetro</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="trapecio" hidden>
+                <h2>Trapecio</h2>
+                <form class="form" data-shape="trapecio">
+                    <div class="form__group">
+                        <label for="trap-bM">Base Mayor (B):</label>
+                        <input type="number" step="any" id="trap-bM" name="baseMayor" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="trap-bm">Base Menor (b):</label>
+                        <input type="number" step="any" id="trap-bm" name="baseMenor" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="trap-h">Altura (h):</label>
+                        <input type="number" step="any" id="trap-h" name="altura">
+                    </div>
+                    <div class="form__group">
+                        <label for="trap-lC">Lado C:</label>
+                        <input type="number" step="any" id="trap-lC" name="ladoC">
+                    </div>
+                    <div class="form__group">
+                        <label for="trap-lD">Lado D:</label>
+                        <input type="number" step="any" id="trap-lD" name="ladoD">
+                        <small>Área: ((B+b)h) / 2. Perímetro: B+b+C+D.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="perimetro">Calcular Perímetro</button>
+                        <button type="button" data-action="area">Calcular Área</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+            
+            <div class="view card" data-figure="cubo" hidden>
+                <h2>Cubo</h2>
+                <form class="form" data-shape="cubo">
+                    <div class="form__group">
+                        <label for="cubo-a">Arista (a):</label>
+                        <input type="number" step="any" id="cubo-a" name="arista" required>
+                        <small>Área: 6a<sup>2</sup>. Volumen: a<sup>3</sup>.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="prisma" hidden>
+                <h2>Prisma Rectangular (Ortoedro)</h2>
+                <form class="form" data-shape="prisma">
+                    <div class="form__group">
+                        <label for="prisma-l">Largo (l):</label>
+                        <input type="number" step="any" id="prisma-l" name="largo" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="prisma-w">Ancho (w):</label>
+                        <input type="number" step="any" id="prisma-w" name="ancho" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="prisma-h">Alto (h):</label>
+                        <input type="number" step="any" id="prisma-h" name="alto" required>
+                        <small>Área: 2(lw + lh + wh). Volumen: lwh.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="esfera" hidden>
+                <h2>Esfera</h2>
+                <form class="form" data-shape="esfera">
+                    <div class="form__group">
+                        <label for="esfera-r">Radio (r):</label>
+                        <input type="number" step="any" id="esfera-r" name="radio" required>
+                        <small>Área: 4&pi;r<sup>2</sup>. Volumen: (4/3)&pi;r<sup>3</sup>.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="cilindro" hidden>
+                <h2>Cilindro</h2>
+                <form class="form" data-shape="cilindro">
+                    <div class="form__group">
+                        <label for="cil-r">Radio (r):</label>
+                        <input type="number" step="any" id="cil-r" name="radio" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="cil-h">Altura (h):</label>
+                        <input type="number" step="any" id="cil-h" name="altura" required>
+                        <small>Área total: 2&pi;r(h+r). Volumen: &pi;r<sup>2</sup>h.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="cono" hidden>
+                <h2>Cono</h2>
+                <form class="form" data-shape="cono">
+                    <div class="form__group">
+                        <label for="cono-r">Radio (r):</label>
+                        <input type="number" step="any" id="cono-r" name="radio" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="cono-h">Altura (h):</label>
+                        <input type="number" step="any" id="cono-h" name="altura" required>
+                        <small>Área total: &pi;r(r+g), donde g es la generatriz. Volumen: (1/3)&pi;r<sup>2</sup>h.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+
+            <div class="view card" data-figure="piramide" hidden>
+                <h2>Pirámide de Base Cuadrada</h2>
+                <form class="form" data-shape="piramide">
+                    <div class="form__group">
+                        <label for="pir-a">Lado de la base (a):</label>
+                        <input type="number" step="any" id="pir-a" name="ladoBase" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="pir-h">Altura (h):</label>
+                        <input type="number" step="any" id="pir-h" name="altura" required>
+                        <small>Área: a<sup>2</sup> + 2al<sub>a</sub>, donde l<sub>a</sub> es apotema lateral. Volumen: (1/3)a<sup>2</sup>h.</small>
+                    </div>
+                    <div class="form__actions">
+                        <button type="button" data-action="area">Calcular Área</button>
+                        <button type="button" data-action="volumen">Calcular Volumen</button>
+                    </div>
+                    <div class="form__feedback"></div>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="/scripts/calculadora.js"></script> </body>
+</html>

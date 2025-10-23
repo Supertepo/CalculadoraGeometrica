@@ -1,0 +1,319 @@
+:root {
+    --primary: #4e7ac4; /* Azul Primario (más claro para fondo oscuro) */
+    --accent: #e74c3c;  /* Rojo de acento/error */
+    --success: #2ecc71; /* Verde de éxito */
+    --bg-light: #2c3e50; /* Fondo principal (gris azulado oscuro) */
+    --bg-dark: #1e2a37;  /* Fondo de elementos (más oscuro que el principal) */
+    --text-color: #ecf0f1; /* Color de texto principal (blanco suave) */
+    --panel-bg: #34495e; /* Color de sidebar y tarjetas */
+    --border-color: #4a637d; /* Color de bordes y separadores */
+    --input-bg: #1e2a37; /* Fondo de inputs */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding-top: 50px; /* Espacio para el menú fijo */
+    background-color: var(--bg-light);
+    color: var(--text-color); /* Usar variable para el color de texto */
+    min-height: 100vh;
+}
+
+/* -------------------
+    MENÚ SUPERIOR
+    ------------------- */
+.top-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: var(--bg-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.top-item {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0 15px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+    border-bottom: 3px solid transparent;
+    flex-shrink: 0;
+}
+
+.top-item:hover {
+    background-color: #3f5875;
+}
+
+.top-item.active {
+    background-color: var(--primary);
+    font-weight: bold;
+    border-color: var(--primary);
+}
+
+/* -------------------
+    LAYOUT PRINCIPAL
+    ------------------- */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    gap: 20px;
+}
+
+.content {
+    flex-grow: 1;
+    min-width: 0; /* Necesario para el layout flexible */
+}
+
+/* -------------------
+    SIDEBAR
+    ------------------- */
+#sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    align-self: flex-start; /* Evita que crezca para ocupar todo el alto */
+}
+
+#sidebar .option {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#sidebar .option:last-child {
+    border-bottom: none;
+}
+
+#sidebar h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: var(--primary);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#sidebar label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#sidebar input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* -------------------
+    VISTAS DE FIGURAS / CARDS
+    ------------------- */
+.view {
+    padding: 20px;
+    background-color: var(--panel-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.view h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary);
+}
+
+.view h3 {
+    color: var(--text-color);
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.view:not(.show) {
+    display: none;
+}
+
+.variant {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+/* -------------------
+    FORMULARIOS
+    ------------------- */
+.form {
+    margin-top: 15px;
+}
+
+.form__group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form__group input {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.form__group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(78, 122, 196, 0.5);
+}
+
+.form__group small {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #b0c4de; /* Un gris azulado más claro */
+    display: block;
+}
+
+.form__actions button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.2s;
+}
+
+.form__actions button:hover {
+    background-color: #3f68a5;
+}
+
+.form__feedback {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid var(--border-color);
+    min-height: 20px;
+    background-color: var(--bg-dark);
+}
+
+.form__feedback.success {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.form__feedback.error {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* -------------------
+    TOOLTIPS/AYUDA
+    ------------------- */
+.help {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.help-icon {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 5px;
+    vertical-align: middle;
+    transition: background-color 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.help-icon:hover {
+    background-color: #3f68a5;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: var(--bg-dark); /* Fondo de tooltip oscuro */
+    color: var(--text-color);
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%); /* Ajuste para centrar */
+    width: 250px;
+    max-width: 90vw;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    line-height: 1.6;
+    border: 1px solid var(--border-color);
+}
+
+/* Muestra el tooltip cuando la ayuda está abierta */
+.help.open .tooltip {
+    visibility: visible;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--bg-dark) transparent transparent transparent;
+}
+
+/* -------------------
+    RESPONSIVE
+    ------------------- */
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    #sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .top-menu {
+        justify-content: flex-start;
+    }
+}
